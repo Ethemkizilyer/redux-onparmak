@@ -1,23 +1,26 @@
-import logo from './logo.svg';
+
+import styled from 'styled-components';
 import './App.css';
+import {Title} from "./asd"
+import Header from './components/Header';
+import Home from './components/Home';
+import Main from './components/Main';
+
+// const Title=styled.h1`
+// font-size:1.5rem;
+// color:red;
+// `;
+
+const Button=styled.button`
+color:${props => props.primary ? "red" : "orange"}`
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+<Header/>
+<Home/>
+<Main/>
+
     </div>
   );
 }

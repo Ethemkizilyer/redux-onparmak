@@ -1,5 +1,4 @@
-{
-    "words": [
+const words= [
         {
           "rank": 1,
           "turkishWord": "olarak",
@@ -4851,4 +4850,5 @@
           "englishWord": "continent"
         }
       ]
-}
+
+      export default words
