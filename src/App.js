@@ -17,6 +17,7 @@ color:${props => props.primary ? "red" : "orange"}`
 function App() {
   return (
     <div className="App">
+    
 <Header/>
 <Home/>
 <Main/>

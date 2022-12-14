@@ -2,6 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 import { MdOutlineRestartAlt } from "react-icons/md";
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
+import { useSelector, useDispatch } from "react-redux";
+import { setReplay } from "../redux/wordSlice";
+import swal from "sweetalert";
 
 const Select = styled.select`
 width: 100px;
@@ -33,13 +36,48 @@ const TimerWrapper = styled.div`
 
 
 
-    const handleChange = (e) => {
+ 
+
+
+const Header = () => {
+
+   const handleChange = (e) => {
       console.log(e.target.value);
     //   dispatch(setSelectedLang(e.target.value));
     };
 
+   const time = useSelector((state) => state.time);
+   const start = useSelector((state) => state.start);
+   const wrongWord = useSelector((state) => state.wrongWord);
+   const correctWord = useSelector((state) => state.correctWord);
 
-const Header = () => {
+   //swal
+   const Swal = require("sweetalert2");
+
+   //dispatch
+   const dispatch = useDispatch();
+
+   const renderTime = ({ remainingTime }) => {
+     if (remainingTime === 0) {
+       Swal.fire({
+         text: "Game Over!",
+         title: `✅ ${correctWord} 🚫 ${wrongWord}`,
+       }).then((confirmButton) => {
+         if (confirmButton.value) {
+           dispatch(setReplay());
+         }
+       });
+     } else {
+       return (
+         <div>
+           {remainingTime} <br />
+           <span className="text-slate-400"> seconds </span>
+         </div>
+       );
+     }
+   };
+
+
   return (
     <div>
       <div

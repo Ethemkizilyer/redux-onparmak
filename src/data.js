@@ -1,4 +1,4 @@
-const words= [
+const wordse= [
         {
           "rank": 1,
           "turkishWord": "olarak",
@@ -4851,4 +4851,4 @@ const words= [
         }
       ]
 
-      export default words
+      export default wordse
