@@ -1,70 +1,89 @@
-import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  setInputText,
+  setKeyPress,
+  setDecreaseTime,
+  setGameStart,
+} from "../redux/wordSlice";
 
 const Main = () => {
+  const dispatch = useDispatch();
 
-    const ethem=(e)=>{
-        // console.log(e.target.value)
+  const inputText = useSelector((state) => state.speed.inputText);
+  const start = useSelector((state) => state.speed.start);
+
+    const handleChange = (e) => {
+      //inputa girilen text
+      dispatch(setInputText(e.target.value));
+
+      if (!start) {
+        dispatch(setDecreaseTime());
+        dispatch(setGameStart());
+      }
+    };
+
+    //space tusuna basılınca olmasını istedigim
+    const handleKeyPress = (e) => {
+      if (e.keyCode === 32 && inputText) {
+        dispatch(setKeyPress());
+      }
+    };
+
+  const ethem = (e) => {
+    // console.log(e.target.value)
+  };
+
+  const bak = (e) => {
+    // console.log(e.key);
+  };
+  let yut;
+
+  window.onkeyup = (e) => {
+    // console.log(e.key)
+    // console.log(e.which)
+    let ert = document.querySelector(".keyboard");
+    // console.log(ert.children)
+    let qwe = ert.children;
+    // console.log(qwe);
+
+    for (let i = 0; i < qwe.length; i++) {
+      // console.log(qwe[i].value);
+      if (qwe[i].value == e.which) {
+        qwe[i].style.backgroundColor = "red";
+        yut = qwe[i].value;
+      }
+      //            else if(e.key == " "){
+      //             console.log(qwe[i],e.which);
+      //  qwe[i].style.backgroundColor="red";
+      //  yut=32
+      //            }
     }
+    setTimeout(sacma, 100);
+    // qwe?.map(item => console.log(item));
+  };
 
-    const bak=(e)=>{
-        // console.log(e.key);
-    }
-let yut ;
-
-
-    window.onkeyup=(e)=>{
-        // console.log(e.key)
-        // console.log(e.which)
-    let ert=document.querySelector(".keyboard")    
-        // console.log(ert.children)
-        let qwe=ert.children
-        // console.log(qwe);
-
-
-        for (let i=0;i<qwe.length;i++){
-            // console.log(qwe[i].value);
-           if(qwe[i].value == e.which){
- qwe[i].style.backgroundColor="red";
- yut=qwe[i].value
-           } 
-//            else if(e.key == " "){ 
-//             console.log(qwe[i],e.which);
-//  qwe[i].style.backgroundColor="red";
-//  yut=32
-//            } 
-        }
-      setTimeout(sacma,100)
-        // qwe?.map(item => console.log(item));
-
-    }
-
-const sacma=()=>{
+  const sacma = () => {
     let cv = document.getElementsByClassName("tus");
     // console.log(cv);
-     let qw = cv;
+    let qw = cv;
     //  console.log(qw);
-     for (let i = 0; i < qw.length; i++) {
-    //    console.log(qw[i].value,yut);
-       if (qw[i].value == yut) {
-         qw[i].style.backgroundColor = "#E5E5E5";
-       }
-    // qw[i].style.backgroundColor="white"
-     }
-    
-}
-  const handleChange = (e) => {
-    //inputa girilen text
-
+    for (let i = 0; i < qw.length; i++) {
+      //    console.log(qw[i].value,yut);
+      if (qw[i].value == yut) {
+        qw[i].style.backgroundColor = "#E5E5E5";
+      }
+      // qw[i].style.backgroundColor="white"
+    }
   };
+  // const handleChange = (e) => {
+  //   //inputa girilen text
+  // };
 
-  //space tusuna basılınca olmasını istedigim
-  const handleKeyPress = (e) => {
-    // if (e.keyCode === 32 && inputText) {
- 
-    // }
-  };
-
-
+  // //space tusuna basılınca olmasını istedigim
+  // const handleKeyPress = (e) => {
+  //   // if (e.keyCode === 32 && inputText) {
+  //   // }
+  // };
 
   return (
     <div onKeyUp={bak}>
@@ -265,10 +284,16 @@ const sacma=()=>{
           type="text"
           placeholder="typing..."
           className="border-indigo-300 border-4 border-solid rounded-md w-1/3 h-20 p-3"
-          style={{border:"1px solid red",borderRadius:"10px",width:"30%",height:"10vh",padding:"1rem"}}
-        //   value={}
-        //   onChange={}
-        //   onKeyDown={}
+          style={{
+            border: "1px solid red",
+            borderRadius: "10px",
+            width: "30%",
+            height: "10vh",
+            padding: "1rem",
+          }}
+          value={inputText}
+          onChange={handleChange}
+          onKeyDown={handleKeyPress}
         />
       </div>
     </div>

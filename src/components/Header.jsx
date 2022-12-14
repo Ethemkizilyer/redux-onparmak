@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { MdOutlineRestartAlt } from "react-icons/md";
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 import { useSelector, useDispatch } from "react-redux";
-import { setReplay } from "../redux/wordSlice";
+import { setReplay, setSelectedLang } from "../redux/wordSlice";
 import swal from "sweetalert";
 
 const Select = styled.select`
@@ -41,16 +41,18 @@ const TimerWrapper = styled.div`
 
 const Header = () => {
 
+
    const handleChange = (e) => {
       console.log(e.target.value);
-    //   dispatch(setSelectedLang(e.target.value));
+      dispatch(setSelectedLang(e.target.value));
     };
 
-   const time = useSelector((state) => state.time);
-   const start = useSelector((state) => state.start);
-   const wrongWord = useSelector((state) => state.wrongWord);
-   const correctWord = useSelector((state) => state.correctWord);
-
+   const time = useSelector((state) => state.speed.time);
+   const start = useSelector((state) => state.speed.start);
+   const wrongWord = useSelector((state) => state.speed.wrongWord);
+   const correctWord = useSelector((state) => state.speed.correctWord);
+   const selectedLang = useSelector((state) => state.speed.selectedLang);
+console.log(time,start)
    //swal
    const Swal = require("sweetalert2");
 
@@ -89,21 +91,27 @@ const Header = () => {
       >
         <TimerWrapper>
           <CountdownCircleTimer
-            isPlaying
-            duration={60}
+            key={time}
+            isPlaying={start === true ? true : false}
+            duration={time}
             colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
             colorsTime={[7, 5, 2, 0]}
             size={120}
           >
-            {({ remainingTime }) => remainingTime}
+            {renderTime}
+            {/* {({ remainingTime }) => remainingTime} */}
           </CountdownCircleTimer>
         </TimerWrapper>
         <Select name="Lang" onChange={handleChange}>
-          <option value="turkishWord">Türkçe</option>
-          <option value="englishWord">İngilizce</option>
+          <option value="turkishWord" disabled={selectedLang === "turkishWord"}>
+            Türkçe
+          </option>
+          <option value="englishWord" disabled={selectedLang === "englishWord"}>
+            İngilizce
+          </option>
         </Select>
         <Baslik>Parmaklarının Hızı Nasıl</Baslik>
-        <button>
+        <button onClick={() => dispatch(setReplay())}>
           <MdOutlineRestartAlt />
         </button>
       </div>

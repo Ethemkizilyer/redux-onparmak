@@ -5,6 +5,7 @@ import {Title} from "./asd"
 import Header from './components/Header';
 import Home from './components/Home';
 import Main from './components/Main';
+import TextArea from './components/TextArea';
 
 // const Title=styled.h1`
 // font-size:1.5rem;
@@ -20,6 +21,7 @@ function App() {
     
 <Header/>
 <Home/>
+<TextArea/>
 <Main/>
 
     </div>

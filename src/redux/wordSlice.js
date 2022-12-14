@@ -25,7 +25,7 @@ export const formul=(array)=> {
 
 
 export const wordSlice = createSlice({
-  name: "words",
+  name: "speed",
   initialState: {
     word: formul(wordse),
     lang: ["turkishWord", "englishWord"],
@@ -78,6 +78,7 @@ export const wordSlice = createSlice({
       state.inputText = ""; //her bosluktan sonra inputu bosalt
     },
     setReplay: (state) => {
+        console.log("setReplay");
       state.inputText = "";
       state.correctWord = 0;
       state.wrongWord = 0;
