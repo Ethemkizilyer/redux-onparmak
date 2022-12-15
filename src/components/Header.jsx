@@ -4,7 +4,7 @@ import { MdOutlineRestartAlt } from "react-icons/md";
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 import { useSelector, useDispatch } from "react-redux";
 import { setReplay, setSelectedLang } from "../redux/wordSlice";
-import swal from "sweetalert";
+
 
 const Select = styled.select`
 width: 100px;
@@ -13,6 +13,8 @@ color: gray;
 padding-left: 5px;
 font-size: 14px;
 border: none;
+position: absolute;
+left: 24%;
 
 
 
@@ -26,6 +28,9 @@ option{
 `
 const Baslik = styled.h1`
 color: red;
+font-weight: bold;
+font-size: 2rem;
+
 `
 const TimerWrapper = styled.div`
   /* position: absolute; */
@@ -52,7 +57,7 @@ const Header = () => {
    const wrongWord = useSelector((state) => state.speed.wrongWord);
    const correctWord = useSelector((state) => state.speed.correctWord);
    const selectedLang = useSelector((state) => state.speed.selectedLang);
-console.log(time,start)
+// console.log(time,start)
    //swal
    const Swal = require("sweetalert2");
 
@@ -62,7 +67,7 @@ console.log(time,start)
    const renderTime = ({ remainingTime }) => {
      if (remainingTime === 0) {
        Swal.fire({
-         text: "Game Over!",
+      text:`${correctWord > 30? "Tebrikler!" : "Tekrar Dene!" }`,
          title: `✅ ${correctWord} 🚫 ${wrongWord}`,
        }).then((confirmButton) => {
          if (confirmButton.value) {
@@ -111,8 +116,8 @@ console.log(time,start)
           </option>
         </Select>
         <Baslik>Parmaklarının Hızı Nasıl</Baslik>
-        <button onClick={() => dispatch(setReplay())}>
-          <MdOutlineRestartAlt />
+        <button   onClick={() => dispatch(setReplay())}>
+          <MdOutlineRestartAlt size={40} className="animas"/>
         </button>
       </div>
     </div>

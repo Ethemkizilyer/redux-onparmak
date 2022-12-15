@@ -1386,7 +1386,7 @@ const wordse= [
         },
         {
           "rank": 290,
-          "turkishWord": "her ikisi de",
+          "turkishWord": "herikiside",
           "englishWord": "both"
         },
         {
@@ -1396,7 +1396,7 @@ const wordse= [
         },
         {
           "rank": 292,
-          "turkishWord": "sık sık",
+          "turkishWord": "sıksık",
           "englishWord": "often"
         },
         {

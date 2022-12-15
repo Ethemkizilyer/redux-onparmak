@@ -36,6 +36,7 @@ export const wordSlice = createSlice({
     wordIndex: 0,
     time: 60,
     start: false,
+    statu:"",
   },
   reducers: {
     setDecreaseTime: (state) => {
@@ -68,11 +69,15 @@ export const wordSlice = createSlice({
       ) {
         state.correctWord++;
         currentText.status = "correct";
+        state.statu="correct"
         console.log("correctWord ", state.correctWord);
+        console.log(currentText);
       } else {
         state.wrongWord++;
         currentText.status = "wrong";
+        state.statu="wrong"
         console.log("wrongword ", state.wrongWord);
+        console.log(currentText);
       }
       state.wordIndex++;
       state.inputText = ""; //her bosluktan sonra inputu bosalt
@@ -86,6 +91,7 @@ export const wordSlice = createSlice({
       state.word = formul(state.word);
       state.wordIndex = 0;
       state.start = false;
+      state.statu="";
     },
   },
 });

@@ -22,7 +22,7 @@ const Main = () => {
       }
     };
 
-    //space tusuna basılınca olmasını istedigim
+    //space tusuna basılınca olacak
     const handleKeyPress = (e) => {
       if (e.keyCode === 32 && inputText) {
         dispatch(setKeyPress());
@@ -50,15 +50,13 @@ const Main = () => {
       // console.log(qwe[i].value);
       if (qwe[i].value == e.which) {
         qwe[i].style.backgroundColor = "red";
+        qwe[i].style.transform = "scale(0.9)";
+
         yut = qwe[i].value;
       }
-      //            else if(e.key == " "){
-      //             console.log(qwe[i],e.which);
-      //  qwe[i].style.backgroundColor="red";
-      //  yut=32
-      //            }
+     
     }
-    setTimeout(sacma, 100);
+    setTimeout(sacma, 50);
     // qwe?.map(item => console.log(item));
   };
 
@@ -71,19 +69,12 @@ const Main = () => {
       //    console.log(qw[i].value,yut);
       if (qw[i].value == yut) {
         qw[i].style.backgroundColor = "#E5E5E5";
+        qw[i].style.transform = "scale(1)";
       }
-      // qw[i].style.backgroundColor="white"
+
     }
   };
-  // const handleChange = (e) => {
-  //   //inputa girilen text
-  // };
 
-  // //space tusuna basılınca olmasını istedigim
-  // const handleKeyPress = (e) => {
-  //   // if (e.keyCode === 32 && inputText) {
-  //   // }
-  // };
 
   return (
     <div onKeyUp={bak}>
@@ -283,14 +274,8 @@ const Main = () => {
         <input
           type="text"
           placeholder="typing..."
-          className="border-indigo-300 border-4 border-solid rounded-md w-1/3 h-20 p-3"
-          style={{
-            border: "1px solid red",
-            borderRadius: "10px",
-            width: "30%",
-            height: "10vh",
-            padding: "1rem",
-          }}
+          className="border-indigo-300 border-4 border-solid rounded-md w-1/3 h-20 p-3 bg-inherit"
+         
           value={inputText}
           onChange={handleChange}
           onKeyDown={handleKeyPress}
