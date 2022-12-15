@@ -115,7 +115,7 @@ const Header = () => {
             İngilizce
           </option>
         </Select>
-        <Baslik>Parmaklarının Hızı Nasıl</Baslik>
+        <Baslik>Ne Kadar Hızlısın?</Baslik>
         <button   onClick={() => dispatch(setReplay())}>
           <MdOutlineRestartAlt size={40} className="animas"/>
         </button>

@@ -28,8 +28,8 @@ function Word({ index, letter }) {
       className={`${
         //hangi yazı üzerinde ise onun style'ı
         index === wordIndex
-          ? "bg-slate-200 text-white m-3 rounded-md py-1"
-          : "text-indigo-300 m-3 py-1"
+          ? "bg-slate-200 h-[3.5rem]  mx-4 text-white  rounded-md "
+          : "text-indigo-300 inline  mx-4"
       }
     
       // correct or wrong style
@@ -55,9 +55,6 @@ function TextArea() {
         height: "150px",
         padding: "1rem",
         overflow: "hidden",
-
-        textOverflow:"ellipsis",
-        whiteSpace: "wrap",
       }}
     >
       <div
@@ -69,6 +66,8 @@ function TextArea() {
           padding: "0.5rem",
           borderRadius: "10px",
           overflow: "hidden",
+          display:"flex",
+          flexWrap:"wrap"
           
        
         }}

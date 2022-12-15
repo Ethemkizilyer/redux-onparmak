@@ -51,12 +51,16 @@ const Main = () => {
       if (qwe[i].value == e.which) {
         qwe[i].style.backgroundColor = "red";
         qwe[i].style.transform = "scale(0.9)";
+ sacma();
 
         yut = qwe[i].value;
+         
       }
-     
+   
+   
     }
-    setTimeout(sacma, 50);
+    
+   setTimeout(sacma, 50); 
     // qwe?.map(item => console.log(item));
   };
 
@@ -70,9 +74,11 @@ const Main = () => {
       if (qw[i].value == yut) {
         qw[i].style.backgroundColor = "#E5E5E5";
         qw[i].style.transform = "scale(1)";
+       
       }
 
     }
+    // setTimeout(sacma, 100); 
   };
 
 
