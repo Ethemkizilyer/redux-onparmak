@@ -1,3 +1,8 @@
+
+
+https://user-images.githubusercontent.com/106928233/207851397-5fd676d6-3d6d-40e5-b6ae-f2d959a9e194.mp4
+
+![onparmak-redux](https://user-images.githubusercontent.com/106928233/207852944-183588ff-9db1-4b09-b1f3-2e81b1d932aa.gif)
 https://redux-onparmak.vercel.app/
 # Getting Started with Create React App
 
