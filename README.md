@@ -1,8 +1,8 @@
 
 
 
+![onparmak-redux](https://user-images.githubusercontent.com/106928233/207989116-838679cc-5d17-44e8-879e-db1c1aa1fbed.gif)
 
-![onparmak-redux](https://user-images.githubusercontent.com/106928233/207852944-183588ff-9db1-4b09-b1f3-2e81b1d932aa.gif)
 https://redux-onparmak.vercel.app/
 # Getting Started with Create React App
 
