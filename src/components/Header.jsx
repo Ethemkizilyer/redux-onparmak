@@ -67,7 +67,7 @@ const Header = () => {
       return (
         <div>
           {remainingTime} <br />
-          <span className="text-slate-400"> seconds </span>
+          <span className="text-slate-400"> saniye </span>
         </div>
       );
     }

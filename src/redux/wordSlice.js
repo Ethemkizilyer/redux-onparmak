@@ -87,7 +87,6 @@ export const wordSlice = createSlice({
       state.word = formul(state.word);
       state.wordIndex = 0;
       state.start = false;
-      state.statu = "";
     },
   },
 });
