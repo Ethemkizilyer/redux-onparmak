@@ -5,19 +5,15 @@ function Word({ index, letter }) {
   const wordIndex = useSelector((state) => state.speed.wordIndex);
   const selectedLang = useSelector((state) => state.speed.selectedLang);
   const lang = useSelector((state) => state.speed.lang);
-  const statu = useSelector((state)=> state.speed.statu)
+
   const currentWord = useRef();
 
-
   useEffect(() => {
-
-   
     if (wordIndex === index) {
       currentWord.current.scrollIntoView();
       // console.log(wordIndex);
       // console.log(index);
     }
-
   }, [wordIndex, index]);
 
   return (
@@ -66,10 +62,8 @@ function TextArea() {
           padding: "0.5rem",
           borderRadius: "10px",
           overflow: "hidden",
-          display:"flex",
-          flexWrap:"wrap"
-          
-       
+          display: "flex",
+          flexWrap: "wrap",
         }}
       >
         {words.map((letter, index) => {

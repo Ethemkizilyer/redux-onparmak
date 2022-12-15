@@ -1,37 +1,33 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react";
+import styled from "styled-components";
 import { MdOutlineRestartAlt } from "react-icons/md";
-import { CountdownCircleTimer } from 'react-countdown-circle-timer';
+import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import { useSelector, useDispatch } from "react-redux";
 import { setReplay, setSelectedLang } from "../redux/wordSlice";
 
-
 const Select = styled.select`
-width: 100px;
-height: 35px;
-color: gray;
-padding-left: 5px;
-font-size: 14px;
-border: none;
-position: absolute;
-left: 24%;
+  width: 100px;
+  height: 35px;
+  color: gray;
+  padding-left: 5px;
+  font-size: 14px;
+  border: none;
+  position: absolute;
+  left: 24%;
 
-
-
-option{
+  option {
     color: black;
     display: flex;
     white-space: pre;
     min-height: 20px;
     padding: 0px 2px 1px;
-}
-`
+  }
+`;
 const Baslik = styled.h1`
-color: red;
-font-weight: bold;
-font-size: 2rem;
-
-`
+  color: red;
+  font-weight: bold;
+  font-size: 2rem;
+`;
 const TimerWrapper = styled.div`
   /* position: absolute; */
   top: 27%;
@@ -39,51 +35,43 @@ const TimerWrapper = styled.div`
   /* transform: translate(-50%, -50%); */
 `;
 
-
-
- 
-
-
 const Header = () => {
+  const handleChange = (e) => {
+    console.log(e.target.value);
+    dispatch(setSelectedLang(e.target.value));
+  };
 
+  const time = useSelector((state) => state.speed.time);
+  const start = useSelector((state) => state.speed.start);
+  const wrongWord = useSelector((state) => state.speed.wrongWord);
+  const correctWord = useSelector((state) => state.speed.correctWord);
+  const selectedLang = useSelector((state) => state.speed.selectedLang);
+  // console.log(time,start)
+  //swal
+  const Swal = require("sweetalert2");
 
-   const handleChange = (e) => {
-      console.log(e.target.value);
-      dispatch(setSelectedLang(e.target.value));
-    };
+  //dispatch
+  const dispatch = useDispatch();
 
-   const time = useSelector((state) => state.speed.time);
-   const start = useSelector((state) => state.speed.start);
-   const wrongWord = useSelector((state) => state.speed.wrongWord);
-   const correctWord = useSelector((state) => state.speed.correctWord);
-   const selectedLang = useSelector((state) => state.speed.selectedLang);
-// console.log(time,start)
-   //swal
-   const Swal = require("sweetalert2");
-
-   //dispatch
-   const dispatch = useDispatch();
-
-   const renderTime = ({ remainingTime }) => {
-     if (remainingTime === 0) {
-       Swal.fire({
-      text:`${correctWord > 30? "Tebrikler!" : "Tekrar Dene!" }`,
-         title: `✅ ${correctWord} 🚫 ${wrongWord}`,
-       }).then((confirmButton) => {
-         if (confirmButton.value) {
-           dispatch(setReplay());
-         }
-       });
-     } else {
-       return (
-         <div>
-           {remainingTime} <br />
-           <span className="text-slate-400"> seconds </span>
-         </div>
-       );
-     }
-   };
-
+  const renderTime = ({ remainingTime }) => {
+    if (remainingTime === 0) {
+      Swal.fire({
+        text: `${correctWord > 30 ? "Tebrikler!" : "Tekrar Dene!"}`,
+        title: `✅ ${correctWord} 🚫 ${wrongWord}`,
+      }).then((confirmButton) => {
+        if (confirmButton.value) {
+          dispatch(setReplay());
+        }
+      });
+    } else {
+      return (
+        <div>
+          {remainingTime} <br />
+          <span className="text-slate-400"> seconds </span>
+        </div>
+      );
+    }
+  };
 
   return (
     <div>
@@ -116,12 +104,12 @@ const Header = () => {
           </option>
         </Select>
         <Baslik>Ne Kadar Hızlısın?</Baslik>
-        <button   onClick={() => dispatch(setReplay())}>
-          <MdOutlineRestartAlt size={40} className="animas"/>
+        <button onClick={() => dispatch(setReplay())}>
+          <MdOutlineRestartAlt size={40} className="animas" />
         </button>
       </div>
     </div>
   );
-}
+};
 
-export default Header
+export default Header;

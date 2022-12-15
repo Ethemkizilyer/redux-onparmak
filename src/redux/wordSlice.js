@@ -1,28 +1,25 @@
 import { createSlice } from "@reduxjs/toolkit";
 import wordse from "../data";
 
+export const formul = (array) => {
+  let currentIndex = array.length,
+    randomIndex;
 
-export const formul=(array)=> {
-    let currentIndex = array.length,
-      randomIndex;
-  
-    // karıstırılacak ögeler varsa.
-    while (currentIndex !== 0) {
-  
-      // biri secilir.
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex--;
-  
-      // burada digeriyle degisir.
-      [array[currentIndex], array[randomIndex]] = [
-        array[randomIndex],
-        array[currentIndex],
-      ];
-    }
-  
-    return array;
+  // karıstırılacak ögeler varsa.
+  while (currentIndex !== 0) {
+    // biri secilir.
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // burada digeriyle degisir.
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex],
+      array[currentIndex],
+    ];
   }
 
+  return array;
+};
 
 export const wordSlice = createSlice({
   name: "speed",
@@ -36,7 +33,6 @@ export const wordSlice = createSlice({
     wordIndex: 0,
     time: 60,
     start: false,
-    statu:"",
   },
   reducers: {
     setDecreaseTime: (state) => {
@@ -69,13 +65,13 @@ export const wordSlice = createSlice({
       ) {
         state.correctWord++;
         currentText.status = "correct";
-        state.statu="correct"
+
         console.log("correctWord ", state.correctWord);
         console.log(currentText);
       } else {
         state.wrongWord++;
         currentText.status = "wrong";
-        state.statu="wrong"
+
         console.log("wrongword ", state.wrongWord);
         console.log(currentText);
       }
@@ -83,7 +79,7 @@ export const wordSlice = createSlice({
       state.inputText = ""; //her bosluktan sonra inputu bosalt
     },
     setReplay: (state) => {
-        console.log("setReplay");
+      console.log("setReplay");
       state.inputText = "";
       state.correctWord = 0;
       state.wrongWord = 0;
@@ -91,7 +87,7 @@ export const wordSlice = createSlice({
       state.word = formul(state.word);
       state.wordIndex = 0;
       state.start = false;
-      state.statu="";
+      state.statu = "";
     },
   },
 });

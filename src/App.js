@@ -1,29 +1,27 @@
-
-import styled from 'styled-components';
-import './App.css';
-import {Title} from "./asd"
-import Header from './components/Header';
-import Home from './components/Home';
-import Main from './components/Main';
-import TextArea from './components/TextArea';
+import styled from "styled-components";
+import "./App.css";
+import { Title } from "./asd";
+import Header from "./components/Header";
+import Home from "./components/Home";
+import Main from "./components/Main";
+import TextArea from "./components/TextArea";
 
 // const Title=styled.h1`
 // font-size:1.5rem;
 // color:red;
 // `;
 
-const Button=styled.button`
-color:${props => props.primary ? "red" : "orange"}`
+const Button = styled.button`
+  color: ${(props) => (props.primary ? "red" : "orange")};
+`;
 
 function App() {
   return (
     <div className="App">
-    
-<Header/>
-<Home/>
-<TextArea/>
-<Main/>
-
+      <Header />
+      <Home />
+      <TextArea />
+      <Main />
     </div>
   );
 }
