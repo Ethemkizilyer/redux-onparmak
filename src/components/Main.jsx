@@ -29,25 +29,14 @@ const Main = () => {
     }
   };
 
-  const ethem = (e) => {
-    // console.log(e.target.value)
-  };
-
-  const bak = (e) => {
-    // console.log(e.key);
-  };
   let yut;
 
   window.onkeyup = (e) => {
-    // console.log(e.key)
-    // console.log(e.which)
     let ert = document.querySelector(".keyboard");
-    // console.log(ert.children)
+
     let qwe = ert.children;
-    // console.log(qwe);
 
     for (let i = 0; i < qwe.length; i++) {
-      // console.log(qwe[i].value);
       if (qwe[i].value == e.which) {
         qwe[i].style.backgroundColor = "red";
         qwe[i].style.transform = "scale(0.9)";
@@ -58,26 +47,23 @@ const Main = () => {
     }
 
     setTimeout(sacma, 50);
-    // qwe?.map(item => console.log(item));
   };
 
   const sacma = () => {
     let cv = document.getElementsByClassName("tus");
-    // console.log(cv);
+
     let qw = cv;
-    //  console.log(qw);
+
     for (let i = 0; i < qw.length; i++) {
-      //    console.log(qw[i].value,yut);
       if (qw[i].value == yut) {
         qw[i].style.backgroundColor = "#E5E5E5";
         qw[i].style.transform = "scale(1)";
       }
     }
-    // setTimeout(sacma, 100);
   };
 
   return (
-    <div onKeyUp={bak}>
+    <div className="ert">
       <div className="keyboard">
         <button value="192" className="a1 tus">
           é
@@ -160,7 +146,7 @@ const Main = () => {
         <button value="221" className="a27 tus">
           Ü
         </button>
-        <button value="13" className="a28 tus" onClick={ethem}>
+        <button value="13" className="a28 tus">
           Enter
           {/* <button className="a64 tus"  value="Enter"></button> */}
         </button>
@@ -274,7 +260,7 @@ const Main = () => {
         <input
           type="text"
           placeholder="Başla..."
-          className="border-indigo-300 border-4 border-solid rounded-md w-1/3 h-20 p-3 bg-inherit"
+          className="border-indigo-400 border-4 border-solid rounded-md w-1/3 h-20 p-3 bg-inherit placeholder:text-indigo-800"
           value={inputText}
           onChange={handleChange}
           onKeyDown={handleKeyPress}

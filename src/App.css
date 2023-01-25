@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+
 }
 
 
@@ -8,9 +9,6 @@
   min-width: 850px;
   min-height: 150px;
   margin: 3rem auto;
-  /* display: grid;
-  grid-template-columns: repeat(15,1fr);
-  grid-template-rows: repeat(5,1fr); */
   display: flex;
   flex-wrap: wrap;
 padding: 0.5rem;
@@ -97,4 +95,7 @@ margin-top:-1rem ;
 @keyframes ethem{
   from{transform:rotate(0deg)}
   to{transform:rotate(-360deg)}
+}
+.ert{
+  width: 100%;
 }

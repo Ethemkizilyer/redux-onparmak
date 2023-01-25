@@ -12,8 +12,7 @@ const Select = styled.select`
   padding-left: 5px;
   font-size: 14px;
   border: none;
-  position: absolute;
-  left: 24%;
+  margin-right: 1rem;
 
   option {
     color: black;
@@ -24,14 +23,15 @@ const Select = styled.select`
   }
 `;
 const Baslik = styled.h1`
-  color: red;
+  color: #35b8ad;
   font-weight: bold;
   font-size: 2rem;
 `;
 const TimerWrapper = styled.div`
   /* position: absolute; */
-  top: 27%;
-  left: 17%;
+  width: 10px;
+  /* top: 27%;
+  left: 17%; */
   /* transform: translate(-50%, -50%); */
 `;
 
@@ -67,34 +67,47 @@ const Header = () => {
       return (
         <div>
           {remainingTime} <br />
-          <span className="text-slate-400"> saniye </span>
+          <span className="text-slate-800"> saniye </span>
         </div>
       );
     }
   };
 
   return (
-    <div>
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-around",
-        }}
-      >
-        <TimerWrapper>
+    <header
+      className="mx-auto container sticky top-0 bg-white shadow-md flex items-center text-center justify-center px-8 py-02"
+      style={{
+        background:
+          "radial-gradient(circle, rgba(231,175,204,1) 8%, rgba(184,47,107,1) 15%, rgba(158,186,230,1) 81%, rgba(148,187,233,1) 91%)",
+      }}
+    >
+      {/* logo */}
+
+      <div className="w-4/12 text-center flex flex-wrap items-center">
+   
           <CountdownCircleTimer
             key={time}
             isPlaying={start === true ? true : false}
             duration={time}
             colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
             colorsTime={[7, 5, 2, 0]}
-            size={120}
+            size={100}
+            unit="vw"
+            strokeWidth={8}
           >
             {renderTime}
-            {/* {({ remainingTime }) => remainingTime} */}
           </CountdownCircleTimer>
-        </TimerWrapper>
+   
+      </div>
+
+      {/* navigation */}
+      <div className="w-4/12 ">
+        <nav className="nav font-semibold text-lg">
+          <Baslik>Ne Kadar Hızlısın?</Baslik>
+        </nav>
+      </div>
+      {/* buttons -*/}
+      <div className="w-4/12 flex justify-end">
         <Select name="Lang" onChange={handleChange}>
           <option value="turkishWord" disabled={selectedLang === "turkishWord"}>
             Türkçe
@@ -103,12 +116,12 @@ const Header = () => {
             İngilizce
           </option>
         </Select>
-        <Baslik>Ne Kadar Hızlısın?</Baslik>
+
         <button onClick={() => dispatch(setReplay())}>
           <MdOutlineRestartAlt size={40} className="animas" />
         </button>
       </div>
-    </div>
+    </header>
   );
 };
 
